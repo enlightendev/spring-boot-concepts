@@ -3,6 +3,7 @@ package io.enlightendev.controllers;
 import io.enlightendev.domain.Greeting;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
+import org.json.JSONObject;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -72,5 +73,26 @@ public class MainController {
         return new ResponseEntity<Greeting>(greeting, responseHeaders, HttpStatus.OK);
 
     }
+
+    /**
+     *
+     * @param jsonString
+     * @return
+     */
+    @RequestMapping(value = "jsonBody", method = RequestMethod.POST)
+    public @ResponseBody ResponseEntity<Greeting> jsonBody(@RequestBody String jsonString){
+
+        JSONObject jsonObject = new JSONObject(jsonString);
+
+        Greeting greeting = new Greeting(counter.incrementAndGet(), String.format(template, "world"));
+
+        JSONObject user = (JSONObject)jsonObject.get("user");
+        String password = (String)user.get("password");
+
+        return new ResponseEntity<Greeting>(greeting, HttpStatus.OK);
+
+    }
+
+
 
 }

@@ -34,6 +34,9 @@ dependencies {
 
     compile('org.springframework.boot:spring-boot-starter-log4j2')
 
+    // https://mvnrepository.com/artifact/org.json/json
+    compile group: 'org.json', name: 'json', version: '20160212'
+
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 
