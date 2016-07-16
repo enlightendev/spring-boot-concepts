@@ -51,6 +51,8 @@ public class MainController {
             @RequestHeader(value="user-agent", defaultValue="foo") String userAgent,
             @RequestHeader(value="client-id", defaultValue="1234") String clientId ){
 
+        log.debug("requestHeaders( userAgent: " + userAgent + " clientId: " + clientId +")" );
+
         Greeting greeting = new Greeting(counter.incrementAndGet(), String.format(template, "world"));
 
         return new ResponseEntity<Greeting>(greeting, HttpStatus.OK);
@@ -92,7 +94,5 @@ public class MainController {
         return new ResponseEntity<Greeting>(greeting, HttpStatus.OK);
 
     }
-
-
 
 }
