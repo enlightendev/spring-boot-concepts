@@ -15,7 +15,7 @@ phases:
   build:
     commands:
       - echo Build started on `date`
-      - gradlew bootRepackage
+      - ./gradlew bootRepackage
   post_build:
     commands:
       - echo Nothing to do in the post_build phase...
