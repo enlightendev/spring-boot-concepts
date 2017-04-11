@@ -12,6 +12,7 @@ phases:
     commands:
       - echo Nothing to do in the pre_build phase...
       - echo More nothing to do in the pre_build phase...
+      - ./gradlew clean
   build:
     commands:
       - echo Build started on `date`
