@@ -1,0 +1,27 @@
+version: 0.1
+
+environment_variables:
+  plaintext:
+    MY_PROP: "juan"
+
+phases:
+  install:
+    commands:
+      - echo updating os in install phase...
+      - sudo yum update -y
+  pre_build:
+    commands:
+      - echo Nothing to do in the pre_build phase...
+      - echo More nothing to do in the pre_build phase...
+  build:
+    commands:
+      - echo Build started on `date`
+      - gradlew bootRepackage
+  post_build:
+    commands:
+      - echo Nothing to do in the post_build phase...
+artifacts:
+  files:
+    - build/libs/spring-boot-concepts-0.0.1-SNAPSHOT.jar
+    - location
+  discard-paths: yes

@@ -1,2 +1,51 @@
 server:
-  port: 7575
+  port: 8080
+
+
+spring:
+  datasource:
+    pool-name: gradfin-hikari-connection-pool
+    maximum-pool-size: 30
+#    min-idle: 3
+    max-lifetime: 1800000
+    connection-timeout: 30000
+    idle-timeout: 600000
+    max-open-prepared-statements: 250
+    pool-prepared-statements: true
+    type: com.zaxxer.hikari.HikariDataSource
+
+---
+
+spring:
+  profiles: development
+  datasource:
+    url: jdbc:mysql://localhost/springdb
+    username: springdb
+    password: springdb
+  jpa:
+    show-sql: false
+    format-sql: true
+    hibernate:
+      ddl-auto: create
+      type: trace
+  output:
+    ansi:
+      enabled: always
+
+---
+
+spring:
+  profiles: aws
+  datasource:
+    url: jdbc:mysql://devopsdb.clnkft9ha6nq.us-east-1.rds.amazonaws.com/springdb
+    username: springdb
+    password: springdb
+  jpa:
+    show-sql: false
+    format-sql: true
+    hibernate:
+      ddl-auto: create
+      type: trace
+  output:
+    ansi:
+      enabled: always
