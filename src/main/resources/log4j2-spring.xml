@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration monitorInterval="60">
+
+    <!--<Properties>-->
+        <!--<Property name="log-path">/Users/Juan/dev/logs/spring-boot-concepts</Property>-->
+    <!--</Properties>-->
+    <Appenders>
+        <Console name="Console-Appender" target="SYSTEM_OUT">
+            <PatternLayout>
+                <pattern>
+                    [%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n
+                </pattern>>
+            </PatternLayout>
+        </Console>
+        <!--<File name="App-File-Appender" fileName="${log-path}/application.log">-->
+            <!--<PatternLayout>-->
+                <!--<pattern>-->
+                    <!--[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n-->
+                <!--</pattern>-->
+            <!--</PatternLayout>-->
+        <!--</File>-->
+        <!--<File name="SpringBoot-File-Appender" fileName="${log-path}/spring-boot.log">-->
+            <!--<PatternLayout>-->
+                <!--<pattern>-->
+                    <!--[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n-->
+                <!--</pattern>-->
+            <!--</PatternLayout>-->
+        <!--</File>-->
+    </Appenders>
+    <!-- configuration to be enabled when the "dev" or "staging" profiles are active -->
+    <Loggers>
+        <Logger name="org.springframework.web" level="info" additivity="false">
+            <!--<AppenderRef ref="SpringBoot-File-Appender"/>-->
+            <AppenderRef ref="Console-Appender"/>
+        </Logger>
+        <Logger name="io.enlightendev" level="trace" additivity="false">
+            <!--<AppenderRef ref="App-File-Appender"/>-->
+            <AppenderRef ref="Console-Appender"/>
+        </Logger>
+        <Root>
+            <AppenderRef ref="Console-Appender"/>
+        </Root>
+    </Loggers>
+</configuration>
